@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/ui/views/bottom_nav_bar.dart';
 import 'package:myapp/ui/views/get_started_page.dart';
+import 'package:myapp/ui/views/hotel_details.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{
@@ -25,6 +26,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: seen == true ? MyBottomNavigation(): const GetStartedPage(),
+      routes: {
+        '/hotelDetails': (context) => const HotelDetails(),
+        '/bottomNavBar': (context) => MyBottomNavigation(),       
+      },
       
     );
   }

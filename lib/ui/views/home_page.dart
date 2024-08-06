@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/ui/views/hotel_details.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -118,55 +119,63 @@ class HomePage extends StatelessWidget {
                 height: 20,
               ),
 
-              SizedBox(
-                height: 250, // Adjust the height based on your needs
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 1,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(223, 238, 229, 229),
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: const Image(
-                                image: AssetImage(
-                                    'assets/images/hotels/hotel.jpg'),
-                                fit: BoxFit.cover,
-                                width: 370,
-                                height: 200,
-                              ),
-                            ),
-                          ),
-                          const Row(
+              Hero(
+                tag: HotelDetails,
+                child: SizedBox(
+                  height: 250, // Adjust the height based on your needs
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 1,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/hotelDetails');
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Column(
                             children: [
-                              Text(
-                                "25 % OFF",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
-                              ), 
-                              SizedBox(width: 40,),          
-                              Text(
-                                "Hotel Name",
-                                style: TextStyle(
-                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: const Color.fromARGB(223, 238, 229, 229),
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: const Image(
+                                    image: AssetImage(
+                                        'assets/images/hotels/hotel.jpg'),
+                                    fit: BoxFit.cover,
+                                    width: 370,
+                                    height: 200,
+                                  ),
+                                ),
                               ),
-                               SizedBox(width: 40,),     
-                               Text("499\$/night"),
-                         
+                              const Row(
+                                children: [
+                                  Text(
+                                    "25 % OFF",
+                                    style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold),
+                                  ), 
+                                  SizedBox(width: 40,),          
+                                  Text(
+                                    "Hotel Name",
+                                    style: TextStyle(
+                                        fontSize: 15, fontWeight: FontWeight.bold),
+                                  ),
+                                   SizedBox(width: 40,),     
+                                   Text("499\$/night"),
                              
+                                 
+                                ],
+                              )
                             ],
-                          )
-                        ],
-                      ),
-                    );
-                  },
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
